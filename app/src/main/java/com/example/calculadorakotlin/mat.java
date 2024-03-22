@@ -39,14 +39,26 @@ public class mat {
             return resultado;
         }
     }
-    public static int fibonacci(int n) {
+    public static String fibonacci(int n) {
+        String rpt = "";
         if (n == 0) {
-            return 0;
+            return "0";
         } else if (n == 1) {
-            return 1;
+            return "1";
         } else {
-            return fibonacci(n - 1) + fibonacci(n - 2);
-        }
+            int fibo1=1;
+            int fibo2=1;
+
+            rpt+=(fibo1 + ", ");
+            for(int i=2;i<=n;i++){
+                rpt+=(fibo2 + ", ");
+                fibo2 = fibo1 + fibo2;
+                fibo1 = fibo2 - fibo1;
+            }
+            }
+
+
+        return rpt;
 
     }
 }
