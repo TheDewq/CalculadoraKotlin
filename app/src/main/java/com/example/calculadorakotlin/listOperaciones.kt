@@ -1,8 +1,10 @@
 package com.example.calculadorakotlin
 
-class listOperaciones constructor(var operacion:String, var resultado:String){
+data class listOperaciones(
+    var operacion:String,
+    var resultado:String
+)
 
 
 
 
-}

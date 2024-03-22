@@ -23,6 +23,7 @@ public class mat {
         } else {
             throw new IllegalArgumentException("No se puede dividir por cero");
         }
+
     }
 
     public static long factorial(int n) {

@@ -1,5 +1,6 @@
 package com.example.calculadorakotlin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -27,17 +28,23 @@ class MainActivity : AppCompatActivity() {
     fun get_values(view: View){
         edit_n1 = findViewById(R.id.editTextText);
         edit_n2 = findViewById(R.id.editTextText2);
-        n1 = edit_n1.text.toString().toDouble();
-        n2 = edit_n2.text.toString().toDouble();
-        var listadapter = listAdapter(put_operaciones(),this);
-        var recycler:RecyclerView = findViewById(R.id.que);
-        recycler.setHasFixedSize(true)
-        recycler.layoutManager = LinearLayoutManager(this)
-        listadapter.listAdapter(put_operaciones(), this)
-        recycler.adapter = listadapter
+        println(">${edit_n1.text.toString()}<no mms y aparte de eso >${edit_n1.text.toString() == ""}<")
+        if(edit_n1.text.toString() == "" || edit_n2.text.toString() == ""){
+            open_view_missing_value()
+
+        }else {
+
+            n1 = edit_n1.text.toString().toDouble();
+            n2 = edit_n2.text.toString().toDouble();
+            var listadapter = listAdapter(put_operaciones(), this);
+            var recycler: RecyclerView = findViewById(R.id.que);
+            recycler.setHasFixedSize(true)
+            recycler.layoutManager = LinearLayoutManager(this)
+            listadapter.listAdapter(put_operaciones(), this)
+            recycler.adapter = listadapter
 
 
-
+        }
     }
     fun put_operaciones():MutableList<listOperaciones>{
         var lista:MutableList<listOperaciones> = ArrayList();
@@ -50,7 +57,10 @@ class MainActivity : AppCompatActivity() {
 
         return lista
     }
-
+    fun open_view_missing_value(){
+        val intent = Intent(this, view_missing_value::class.java)
+        startActivity(intent)
+    }
 
 
 
